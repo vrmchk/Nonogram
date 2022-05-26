@@ -5,13 +5,18 @@ namespace Nonogram.Model;
 
 internal class BrushGridEventArgs : EventArgs
 {
-    public BrushGridEventArgs(BrushOperationTypes brushOperationTypes, Brush? brush = null)
+    public BrushGridEventArgs(BrushOperationTypes brushOperationTypes)
     {
-        Brush = brush;
         BrushOperationTypes = brushOperationTypes;
+        Color = null;
+    }
+    
+    public BrushGridEventArgs(BrushOperationTypes brushOperationTypes, CellColor color) : this(brushOperationTypes)
+    {
+        Color = color;
     }
 
-    public Brush? Brush { get; }
+    public CellColor? Color { get; }
     public BrushOperationTypes BrushOperationTypes { get; }
 }
 

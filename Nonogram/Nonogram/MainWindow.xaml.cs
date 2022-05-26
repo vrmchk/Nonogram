@@ -24,8 +24,9 @@ namespace Nonogram
     {
         private readonly Field _field;
         private FieldPrinter _printer;
+        private FieldSaver _saver;
 
-        public MainWindow()
+        public MainWindow(bool newGame = true)
         {
             InitializeComponent();
             var gameGrids
@@ -34,7 +35,9 @@ namespace Nonogram
                 Field.GetVisualChildren<TextBlock>().Where(b => b.Tag?.ToString() == "NumberBlock");
             _field = new Field(gameGrids, numberBlocks);
             _printer = new FieldPrinter(_field);
+            _saver = new FieldSaver(_field);
             _field.GameFinished += Game_Finished;
+            if (!newGame) LoadAnExistingGame();
         }
 
         private void Game_Finished()
@@ -42,8 +45,21 @@ namespace Nonogram
             MessageBox.Show("Well done!!!");
         }
 
+        private void LoadAnExistingGame()
+        {
+            try
+            {
+                _saver.LoadAnExistingGame();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            _saver.Save();
         }
 
         private void NewGame_Button_Click(object sender, RoutedEventArgs e)

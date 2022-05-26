@@ -27,39 +27,39 @@ internal class FieldGenerator
 
     private void FillCells()
     {
-        _cells.Add(new Cell(GetRandomBrush()));
+        _cells.Add(new Cell(GetRandomColor()));
         for (int row = 1; row < Settings.GameGridsCount; row++)
         {
-            _cells.Add(new Cell(GetPossiblySimilarBrush(_cells.Last().Brush)));
+            _cells.Add(new Cell(GetPossiblySimilarBrush(_cells.Last().Color)));
         }
     }
 
-    private Brush GetRandomBrush()
+    private CellColor GetRandomColor()
     {
-        return _random.Next(0, 2) == 0 ? Settings.Brush1 : Settings.Brush2;
+        return _random.Next(0, 2) == 0 ? CellColor.First : CellColor.Second;
     }
 
-    private Brush GetPossiblySimilarBrush(Brush brush, int probabilityOfSimilarity = 70)
+    private CellColor GetPossiblySimilarBrush(CellColor color, int probabilityOfSimilarity = 70)
     {
         if (probabilityOfSimilarity is <= 0 or > 100)
-            return GetRandomBrush();
+            return GetRandomColor();
 
         if (_random.Next(1, 101) < probabilityOfSimilarity)
-            return brush;
+            return color;
 
         else
-            return brush != Settings.Brush1 ? Settings.Brush1 : Settings.Brush2;
+            return color != CellColor.First ? CellColor.First : CellColor.Second;
     }
 
     private void FillBrushCounts()
     {
-        FillVertical(Settings.Brush1);
-        FillVertical(Settings.Brush2);
-        FillHorizontal(Settings.Brush1);
-        FillHorizontal(Settings.Brush2);
+        FillVertical(CellColor.First);
+        FillVertical(CellColor.Second);
+        FillHorizontal(CellColor.First);
+        FillHorizontal(CellColor.Second);
     }
 
-    private void FillHorizontal(Brush brush)
+    private void FillHorizontal(CellColor color)
     {
         for (int i = 0; i < _rowColSize; i++)
         {
@@ -67,15 +67,15 @@ internal class FieldGenerator
             int maxCount = 0;
             for (int j = 0; j < _rowColSize; j++)
             {
-                Brush cellBrush = Cells[i * _rowColSize + j].Brush;
+                CellColor cellBrush = Cells[i * _rowColSize + j].Color;
 
-                if (cellBrush == brush)
+                if (cellBrush == color)
                     currentCount++;
 
                 if (currentCount > maxCount)
                     maxCount = currentCount;
 
-                if (cellBrush != brush)
+                if (cellBrush != color)
                     currentCount = 0;
             }
 
@@ -83,7 +83,7 @@ internal class FieldGenerator
         }
     }
 
-    private void FillVertical(Brush brush)
+    private void FillVertical(CellColor color)
     {
         for (int i = 0; i < _rowColSize; i++)
         {
@@ -91,15 +91,15 @@ internal class FieldGenerator
             int maxCount = 0;
             for (int j = 0; j < _rowColSize; j++)
             {
-                Brush cellBrush = Cells[j * _rowColSize + i].Brush;
+                CellColor cellBrush = Cells[j * _rowColSize + i].Color;
 
-                if (cellBrush == brush)
+                if (cellBrush == color)
                     currentCount++;
 
                 if (currentCount > maxCount)
                     maxCount = currentCount;
 
-                if (cellBrush != brush)
+                if (cellBrush != color)
                     currentCount = 0;
             }
 

@@ -13,5 +13,17 @@ namespace Nonogram
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            PreviewWindow previewWindow = new PreviewWindow();
+            previewWindow.Show();
+            previewWindow.GameModeChosen += Game_Mode_Chosen;
+        }
+
+        private void Game_Mode_Chosen(bool newGame)
+        {
+            MainWindow mainWindow = new MainWindow(newGame);
+            mainWindow.Show();
+        }
     }
 }

@@ -7,25 +7,15 @@ internal delegate void CellChangedHandler(Cell sender);
 
 internal class Cell
 {
-    private readonly Brush _brush;
     private bool _isFound;
 
-    public Cell(Brush brush)
+    public Cell(CellColor color)
     {
-        Brush = brush;
+        Color = color;
         IsFound = false;
     }
 
-    public Brush Brush
-    {
-        get => _brush;
-        private init
-        {
-            if (value != Settings.Brush1 && value != Settings.Brush2) throw new ArgumentException(nameof(value));
-            if (_isFound) throw new InvalidOperationException(nameof(value));
-            _brush = value;
-        }
-    }
+    public CellColor Color { get; }
 
     public bool IsFound
     {
@@ -38,4 +28,10 @@ internal class Cell
     }
 
     public event CellChangedHandler CellChanged;
+}
+
+internal enum CellColor
+{
+    First,
+    Second
 }

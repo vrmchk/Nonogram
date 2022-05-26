@@ -5,20 +5,20 @@ namespace Nonogram.Model;
 internal class FillCellCommand : ICommand
 {
     private Cell _cell;
-    private Brush _brush;
-    
-    
-    public FillCellCommand(Cell cell, Brush brush)
+    private CellColor _color;
+
+
+    public FillCellCommand(Cell cell, CellColor color)
     {
         _cell = cell;
-        _brush = brush;
+        _color = color;
     }
 
     public bool WasExecuted { get; private set; }
 
     public void Execute()
     {
-        if (_cell.IsFound || _cell.Brush != _brush)
+        if (_cell.IsFound || _cell.Color != _color)
         {
             WasExecuted = false;
             return;

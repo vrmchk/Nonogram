@@ -18,7 +18,7 @@ internal class FieldPrinter
     {
         sender.Background = e.BrushOperationTypes switch
         {
-            BrushOperationTypes.WithBrush => e.Brush,
+            BrushOperationTypes.WithBrush => e.Color == CellColor.First ? Settings.Brush1 : Settings.Brush2,
             BrushOperationTypes.Default => Settings.DefaultBrush,
             BrushOperationTypes.Incorrect => Settings.WrongBrush,
             _ => throw new ArgumentOutOfRangeException(nameof(e))
