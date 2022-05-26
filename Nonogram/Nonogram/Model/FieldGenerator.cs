@@ -39,7 +39,7 @@ internal class FieldGenerator
         return _random.Next(0, 2) == 0 ? CellColor.First : CellColor.Second;
     }
 
-    private CellColor GetPossiblySimilarBrush(CellColor color, int probabilityOfSimilarity = 70)
+    private CellColor GetPossiblySimilarBrush(CellColor color, int probabilityOfSimilarity = 80)
     {
         if (probabilityOfSimilarity is <= 0 or > 100)
             return GetRandomColor();
