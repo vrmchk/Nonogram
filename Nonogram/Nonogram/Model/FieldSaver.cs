@@ -7,8 +7,8 @@ namespace Nonogram.Model;
 
 internal class FieldSaver
 {
-    private string _pathToSavedField;
-    private Field _field;
+    private readonly string _pathToSavedField;
+    private readonly Field _field;
 
     public FieldSaver(Field field)
     {
@@ -26,7 +26,7 @@ internal class FieldSaver
         }
     }
 
-    public void LoadAnExistingGame()
+    public void LoadExistingGame()
     {
         using (StreamReader reader = new StreamReader(_pathToSavedField))
         {
@@ -38,7 +38,7 @@ internal class FieldSaver
             if (fromJson == null)
                 throw new NullReferenceException("Unable to deserialize a file");
 
-            _field.LoadAnExistingGame(fromJson.Cells, fromJson.BlocksContent, fromJson.HintsLeft);
+            _field.LoadExistingGame(fromJson.Cells, fromJson.BlocksContent, fromJson.HintsLeft);
         }
 
         ClearExistingGame();

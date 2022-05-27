@@ -37,7 +37,7 @@ namespace Nonogram
             _printer = new FieldPrinter(_field);
             _saver = new FieldSaver(_field);
             _field.GameFinished += Game_Finished;
-            if (!newGame) LoadAnExistingGame();
+            if (!newGame) LoadExistingGame();
         }
 
         private void Game_Finished()
@@ -45,11 +45,11 @@ namespace Nonogram
             MessageBox.Show("Well done!!!");
         }
 
-        private void LoadAnExistingGame()
+        private void LoadExistingGame()
         {
             try
             {
-                _saver.LoadAnExistingGame();
+                _saver.LoadExistingGame();
             }
             catch (Exception ex)
             {

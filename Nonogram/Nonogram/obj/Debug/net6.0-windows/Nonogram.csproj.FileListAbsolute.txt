@@ -19,5 +19,5 @@ D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\refint\Nonogram.dll
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.pdb
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.genruntimeconfig.cache
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\ref\Nonogram.dll
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\PreviewWindow.g.cs
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\PreviewWindow.baml
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MenuWindow.g.cs
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MenuWindow.baml

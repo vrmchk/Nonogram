@@ -10,6 +10,7 @@ internal class SerializableField
         BlocksContent = blocksContent;
         HintsLeft = hintsLeft;
     }
+    
     public List<Cell> Cells { get; set; }
     public List<string> BlocksContent { get; set; }
     public int HintsLeft { get; set; }

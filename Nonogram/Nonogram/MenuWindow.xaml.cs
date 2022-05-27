@@ -1,10 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Nonogram;
 
 public delegate void GameModeChosenHandler(bool newGame);
 
-public partial class PreviewWindow : Window
+public partial class MenuWindow : Window
 {
     private readonly string _rules = "There is numbers on the left, right, top and bottom." +
                                      "Left and top numbers show the biggest block of black cells in this row(column). " +
@@ -13,12 +14,11 @@ public partial class PreviewWindow : Window
                                      "Press left mouse button to fill the cell with black color "
                                      + "and right mouse button to fill with yellow.";
 
-    public PreviewWindow()
+    public MenuWindow()
     {
         InitializeComponent();
         RulesBlock.Text = _rules;
     }
-
 
     public event GameModeChosenHandler GameModeChosen;
 

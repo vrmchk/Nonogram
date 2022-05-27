@@ -10,7 +10,7 @@ namespace Nonogram.Model;
 
 internal delegate void GameFinishedHandler();
 
-internal delegate void BrushGridHandler(Grid sender, BrushGridEventArgs e);
+internal delegate void ChangeGridColorHandler(Grid sender, ChangeGridColorEventArgs e);
 
 internal class Field
 {
@@ -37,34 +37,35 @@ internal class Field
     }
 
     public event GameFinishedHandler GameFinished;
-    public event BrushGridHandler BrushGrid;
+    public event ChangeGridColorHandler ChangeGridColor;
 
     public void GenerateNewField()
     {
         FieldGenerator generator = new FieldGenerator();
-        _cells = generator.Cells.ToList();
+        _cells = generator.Cells;
         _commandsHistory = new Stack<ICommand>();
         _hintsLeft = 3;
 
-        _gameGrids.ForEach(g => g.Background = Settings.DefaultBrush);
-        _numberBlocks.ForEach(b => b.Text = generator.BrushCounts[_numberBlocks.IndexOf(b)].ToString());
+        _gameGrids.ForEach(g =>
+            ChangeGridColor?.Invoke(g, new ChangeGridColorEventArgs(ChangeColorOperationTypes.Default)));
+        _numberBlocks.ForEach(b => b.Text = generator.ColorCounts[_numberBlocks.IndexOf(b)].ToString());
         _cells.ForEach(c => c.CellChanged += Cell_Changed);
     }
 
     public void Deconstruct(out List<Cell> cells, out List<string> numberBlockContent, out int hintsLeft)
     {
         cells = _cells;
-        numberBlockContent = _numberBlocks.Select(block => block.Text).ToList();
+        numberBlockContent = _numberBlocks.Select(b => b.Text).ToList();
         hintsLeft = _hintsLeft;
     }
 
-    public void LoadAnExistingGame(List<Cell> cells, List<string> blocksContent, int hintsLeft)
+    public void LoadExistingGame(List<Cell> cells, List<string> blocksContent, int hintsLeft)
     {
         _cells = cells;
         _numberBlocks.ForEach(b => b.Text = blocksContent[_numberBlocks.IndexOf(b)]);
         _hintsLeft = hintsLeft;
-        var foundCells = _cells.Where(c => c.IsFound).ToList();
         _cells.ForEach(c => c.CellChanged += Cell_Changed);
+        var foundCells = _cells.Where(c => c.IsFound).ToList();
         foundCells.ForEach(Cell_Changed);
     }
 
@@ -72,9 +73,10 @@ internal class Field
     {
         Grid grid = _gameGrids[_cells.IndexOf(sender)];
         if (sender.IsFound)
-            BrushGrid?.Invoke(grid, new BrushGridEventArgs(BrushOperationTypes.WithBrush, sender.Color));
+            ChangeGridColor?.Invoke(grid,
+                new ChangeGridColorEventArgs(ChangeColorOperationTypes.WithColor, sender.Color));
         else
-            BrushGrid?.Invoke(grid, new BrushGridEventArgs(BrushOperationTypes.Default));
+            ChangeGridColor?.Invoke(grid, new ChangeGridColorEventArgs(ChangeColorOperationTypes.Default));
         if (IsSolved())
             GameFinished?.Invoke();
     }
@@ -126,7 +128,8 @@ internal class Field
     {
         Cell cell = _cells[_gameGrids.IndexOf(sender)];
         if (cell.IsFound) return;
-        if (FillCell(cell, color)) return;
-        BrushGrid?.Invoke(sender, new BrushGridEventArgs(BrushOperationTypes.Incorrect));
+        bool wasFilled = FillCell(cell, color);
+        if (!wasFilled) 
+            ChangeGridColor?.Invoke(sender, new ChangeGridColorEventArgs(ChangeColorOperationTypes.Incorrect));
     }
 }

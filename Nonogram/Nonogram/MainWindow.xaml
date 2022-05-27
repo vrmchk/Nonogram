@@ -275,6 +275,8 @@
                                        x:Key="PlayGridStyle">
                                     <Setter Property="Tag"
                                             Value="GameGrid" />
+                                    <Setter Property="Background"
+                                            Value="White" />
                                 </Style>
                             </Grid.Resources>
                             <Grid.RowDefinitions>

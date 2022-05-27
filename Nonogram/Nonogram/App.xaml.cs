@@ -15,9 +15,9 @@ namespace Nonogram
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            PreviewWindow previewWindow = new PreviewWindow();
-            previewWindow.Show();
-            previewWindow.GameModeChosen += Game_Mode_Chosen;
+            MenuWindow menuWindow = new MenuWindow();
+            menuWindow.Show();
+            menuWindow.GameModeChosen += Game_Mode_Chosen;
         }
 
         private void Game_Mode_Chosen(bool newGame)
