@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Nonogram.Enums;
 
 namespace Nonogram.Model;
 
@@ -52,10 +53,10 @@ internal class Field
         _cells.ForEach(c => c.CellChanged += Cell_Changed);
     }
 
-    public void Deconstruct(out List<Cell> cells, out List<string> numberBlockContent, out int hintsLeft)
+    public void Deconstruct(out List<Cell> cells, out List<string> blockContent, out int hintsLeft)
     {
         cells = _cells;
-        numberBlockContent = _numberBlocks.Select(b => b.Text).ToList();
+        blockContent = _numberBlocks.Select(b => b.Text).ToList();
         hintsLeft = _hintsLeft;
     }
 
@@ -93,7 +94,11 @@ internal class Field
         _commandsHistory.Push(command);
     }
 
-    public void Solve() => _cells.ForEach(c => c.IsFound = true);
+    public void Solve()
+    {   
+        if (!IsSolved())
+            _cells.ForEach(c => c.IsFound = true);
+    }
 
     private bool IsSolved() => _cells.All(c => c.IsFound);
 

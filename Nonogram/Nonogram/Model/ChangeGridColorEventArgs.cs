@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using Nonogram.Enums;
 
 namespace Nonogram.Model;
 
@@ -10,19 +11,13 @@ internal class ChangeGridColorEventArgs : EventArgs
         ChangeColorOperationTypes = changeColorOperationTypes;
         Color = null;
     }
-    
-    public ChangeGridColorEventArgs(ChangeColorOperationTypes changeColorOperationTypes, CellColor color) : this(changeColorOperationTypes)
+
+    public ChangeGridColorEventArgs(ChangeColorOperationTypes changeColorOperationTypes, CellColor color) : this(
+        changeColorOperationTypes)
     {
         Color = color;
     }
 
     public CellColor? Color { get; }
     public ChangeColorOperationTypes ChangeColorOperationTypes { get; }
-}
-
-internal enum ChangeColorOperationTypes
-{
-    WithColor,
-    Default,
-    Incorrect
 }

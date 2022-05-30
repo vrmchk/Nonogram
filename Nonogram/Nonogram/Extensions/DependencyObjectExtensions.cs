@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Nonogram.Model;
+namespace Nonogram.Extensions;
 
-public static class Extensions
+public static class DependencyObjectExtensions
 {
     public static IEnumerable<T> GetVisualChildren<T>(this DependencyObject? depObj) where T : DependencyObject
     {

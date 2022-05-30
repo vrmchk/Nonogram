@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
+using Nonogram.Enums;
+
 
 namespace Nonogram.Model;
 
@@ -28,10 +30,4 @@ internal class Cell
     }
 
     public event CellChangedHandler CellChanged;
-}
-
-internal enum CellColor
-{
-    First,
-    Second
 }
