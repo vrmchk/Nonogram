@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Nonogram.Extensions;
-using Nonogram.Model;
+using Nonogram.Models;
 
 
-namespace Nonogram
+namespace Nonogram.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 using Nonogram.Enums;
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal class FillCellCommand : ICommand
 {

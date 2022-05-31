@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal interface ICommand
 {

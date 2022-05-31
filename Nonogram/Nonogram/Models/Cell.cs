@@ -3,7 +3,7 @@ using System.Windows.Media;
 using Nonogram.Enums;
 
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal delegate void CellChangedHandler(Cell sender);
 

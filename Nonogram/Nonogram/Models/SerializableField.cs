@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal class SerializableField
 {

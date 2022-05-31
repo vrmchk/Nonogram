@@ -4,11 +4,9 @@ D:\Nonogram\Nonogram\Nonogram\bin\Debug\net6.0-windows\Nonogram.runtimeconfig.js
 D:\Nonogram\Nonogram\Nonogram\bin\Debug\net6.0-windows\Nonogram.dll
 D:\Nonogram\Nonogram\Nonogram\bin\Debug\net6.0-windows\Nonogram.pdb
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.csproj.AssemblyReference.cache
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MainWindow.g.cs
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\App.g.cs
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram_MarkupCompile.cache
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram_MarkupCompile.lref
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MainWindow.baml
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.g.resources
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.GeneratedMSBuildEditorConfig.editorconfig
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.AssemblyInfoInputs.cache
@@ -19,5 +17,7 @@ D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\refint\Nonogram.dll
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.pdb
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Nonogram.genruntimeconfig.cache
 D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\ref\Nonogram.dll
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MenuWindow.g.cs
-D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\MenuWindow.baml
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Views\MenuWindow.g.cs
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Views\MainWindow.baml
+D:\Nonogram\Nonogram\Nonogram\obj\Debug\net6.0-windows\Views\MenuWindow.baml

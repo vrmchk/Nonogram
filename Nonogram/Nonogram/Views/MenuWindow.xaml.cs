@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Nonogram;
+namespace Nonogram.Views;
 
 public delegate void GameModeChosenHandler(bool newGame);
 

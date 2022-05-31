@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal class FieldSaver
 {
@@ -20,7 +20,7 @@ internal class FieldSaver
     {
         using (StreamWriter writer = new StreamWriter(_pathToSavedField, append: false))
         {
-            _field.Deconstruct(out List<Cell> cells, out List<string> blockContent, out int hintsLeft);
+            var (cells, blockContent, hintsLeft) = _field;
             SerializableField serializableField = new SerializableField(cells, blockContent, hintsLeft);
             writer.Write(JsonSerializer.Serialize(serializableField));
         }

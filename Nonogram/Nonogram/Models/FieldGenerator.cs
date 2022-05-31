@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Media;
 using Nonogram.Enums;
 
-namespace Nonogram.Model;
+namespace Nonogram.Models;
 
 internal class FieldGenerator
 {
