@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Nonogram.Views;
 
@@ -22,9 +17,9 @@ namespace Nonogram
             menuWindow.GameModeChosen += Game_Mode_Chosen;
         }
 
-        private void Game_Mode_Chosen(bool newGame)
+        private void Game_Mode_Chosen()
         {
-            MainWindow mainWindow = new MainWindow(newGame);
+            MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
     }

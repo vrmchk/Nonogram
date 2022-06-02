@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Media;
-using Nonogram.Enums;
+﻿using Nonogram.Enums;
 
 
 namespace Nonogram.Models;
@@ -11,13 +9,15 @@ internal class Cell
 {
     private bool _isFound;
 
-    public Cell(CellColor color)
+    public Cell(CellColor color, int coordinate)
     {
         Color = color;
+        Coordinate = coordinate;
         IsFound = false;
     }
 
     public CellColor Color { get; }
+    public int Coordinate { get; }
 
     public bool IsFound
     {

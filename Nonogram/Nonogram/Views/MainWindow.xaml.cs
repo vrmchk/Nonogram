@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Nonogram.Extensions;
-using Nonogram.Models;
+using Nonogram.ViewModels;
 
 
 namespace Nonogram.Views
@@ -23,77 +15,78 @@ namespace Nonogram.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Field _field;
-        private FieldPrinter _printer;
-        private FieldSaver _saver;
+        private readonly ViewModel _viewModel;
+        private readonly List<Grid> _gameGrids;
+        private readonly List<TextBlock> _numberBlocks;
 
-        public MainWindow(bool newGame = true)
+        public MainWindow()
         {
             InitializeComponent();
-            var gameGrids
-                = Field.GetVisualChildren<Grid>().Where(g => g.Tag?.ToString() == "GameGrid");
-            var numberBlocks =
-                Field.GetVisualChildren<TextBlock>().Where(b => b.Tag?.ToString() == "NumberBlock");
-            _field = new Field(gameGrids, numberBlocks);
-            _printer = new FieldPrinter(_field);
-            _saver = new FieldSaver(_field);
-            _field.GameFinished += Game_Finished;
-            if (!newGame) LoadExistingGame();
+            _viewModel = ViewModel.GetInstance();
+            _gameGrids = GameField.GetVisualChildren<Grid>().Where(g => g.Tag?.ToString() == "GameGrid").ToList();
+            _numberBlocks = GameField.GetVisualChildren<TextBlock>().Where(g => g.Tag?.ToString() == "NumberBlock").ToList();
+            InitializeNumberBlocksBindings();
+            InitializeGameGridsBindings();
+            InitializeButtonsCommands();
+            InitializeGameGridsCommands();
         }
 
-        private void Game_Finished()
+        private void InitializeButtonsCommands()
         {
-            MessageBox.Show("Well done!!!");
+            SaveButton.Command = _viewModel.SaveCommand;
+            NewGameButton.Command = _viewModel.NewGameCommand;
+            SolveButton.Command = _viewModel.SolveCommand;
+            HintButton.Command = _viewModel.GiveHintCommand;
+            UndoButton.Command = _viewModel.UndoCommand;
         }
 
-        private void LoadExistingGame()
+        private void InitializeGameGridsCommands()
         {
-            try
+            for (int i = 0; i < _gameGrids.Count; i++)
             {
-                _saver.LoadExistingGame();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _saver.Save();
-        }
-
-        private void NewGame_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _field.GenerateNewField();
-        }
-
-        private void Solve_Button_Click(object sender, RoutedEventArgs e)
-        {
-            _field.Solve();
-        }
-
-        private void Hint_Button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                _field.GiveHint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                InputBindingCollection inputBindings = _gameGrids[i].InputBindings;
+                inputBindings.Add(new MouseBinding
+                {
+                    MouseAction = MouseAction.LeftClick, Command = _viewModel.FillCellWithFirstColorCommand,
+                    CommandParameter = i
+                });
+                inputBindings.Add(new MouseBinding
+                {
+                    MouseAction = MouseAction.RightClick, Command = _viewModel.FillCellWithSecondColorCommand,
+                    CommandParameter = i
+                });
             }
         }
 
-        private void Undo_Button_Click(object sender, RoutedEventArgs e)
+        private void InitializeGameGridsBindings()
         {
-            try
+            int index = 0;
+            foreach (Grid grid in _gameGrids)
             {
-                _field.Undo();
+                Binding binding = new Binding()
+                {
+                    Source = _viewModel,
+                    Path = new PropertyPath($"Brushes[{index++}]"),
+                    Mode = BindingMode.TwoWay,
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                };
+                BindingOperations.SetBinding(grid, Grid.BackgroundProperty, binding);
             }
-            catch (Exception ex)
+        }
+
+        private void InitializeNumberBlocksBindings()
+        {
+            int index = 0;
+            foreach (TextBlock block in _numberBlocks)
             {
-                MessageBox.Show(ex.Message);
+                Binding binding = new Binding()
+                {
+                    Source = _viewModel,
+                    Path = new PropertyPath($"ColorsCounts[{index++}]"),
+                    Mode = BindingMode.TwoWay,
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                };
+                BindingOperations.SetBinding(block, TextBlock.TextProperty, binding);
             }
         }
     }

@@ -20,8 +20,8 @@ internal class FieldSaver
     {
         using (StreamWriter writer = new StreamWriter(_pathToSavedField, append: false))
         {
-            var (cells, blockContent, hintsLeft) = _field;
-            SerializableField serializableField = new SerializableField(cells, blockContent, hintsLeft);
+            var (cells, colorsCounts, hintsLeft) = _field;
+            SerializableField serializableField = new SerializableField(cells, colorsCounts, hintsLeft);
             writer.Write(JsonSerializer.Serialize(serializableField));
         }
     }
@@ -38,7 +38,7 @@ internal class FieldSaver
             if (fromJson == null)
                 throw new NullReferenceException("Unable to deserialize a file");
 
-            _field.LoadExistingGame(fromJson.Cells, fromJson.BlocksContent, fromJson.HintsLeft);
+            _field.LoadExistingGame(fromJson.Cells, fromJson.ColorsCounts, fromJson.HintsLeft);
         }
 
         ClearExistingGame();

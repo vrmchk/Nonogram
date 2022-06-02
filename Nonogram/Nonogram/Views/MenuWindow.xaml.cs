@@ -1,9 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using Nonogram.ViewModels;
 
 namespace Nonogram.Views;
-
-public delegate void GameModeChosenHandler(bool newGame);
 
 public partial class MenuWindow : Window
 {
@@ -17,20 +16,21 @@ public partial class MenuWindow : Window
     public MenuWindow()
     {
         InitializeComponent();
+        InitializeUiElementsProperties();
+    }
+    
+    public event Action GameModeChosen;
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        GameModeChosen?.Invoke();
+        Close();
+    }
+
+    private void InitializeUiElementsProperties()
+    {
         RulesBlock.Text = _rules;
-    }
-
-    public event GameModeChosenHandler GameModeChosen;
-
-    private void NewGame_Button_Click(object sender, RoutedEventArgs e)
-    {
-        GameModeChosen?.Invoke(newGame: true);
-        Close();
-    }
-
-    private void Continue_Button_Click(object sender, RoutedEventArgs e)
-    {
-        GameModeChosen?.Invoke(newGame: false);
-        Close();
+        ViewModel viewModel = ViewModel.GetInstance();
+        ContinueButton.Command = viewModel.LoadExistingGameCommand;
     }
 }

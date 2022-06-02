@@ -9,8 +9,8 @@
         WindowStartupLocation="CenterScreen"
         Height="625"
         Width="850">
-    <Grid x:Name="MainGrid"
-          ShowGridLines="False">
+
+    <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="550" />
             <ColumnDefinition Width="*" />
@@ -34,10 +34,9 @@
                   HorizontalAlignment="Center"
                   ShowGridLines="True">
 
-                <Grid x:Name="Field"
+                <Grid x:Name="GameField"
                       Height="510"
                       Width="510">
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="450" />
@@ -48,6 +47,17 @@
                         <RowDefinition Height="450" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+                            <Setter Property="Tag" Value="NumberBlock" />
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="13" />
+                        </Style>
+                    </Grid.Resources>
+
                     <Grid Grid.Row="0"
                           Grid.Column="0"
                           Background="Black">
@@ -77,35 +87,21 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Tag"
-                                        Value="NumberBlock" />
-                                <Setter Property="Background"
-                                        Value="White" />
-                                <Setter Property="HorizontalAlignment"
-                                        Value="Center" />
-                                <Setter Property="VerticalAlignment"
-                                        Value="Center" />
-                                <Setter Property="FontSize"
-                                        Value="13" />
-                            </Style>
-                        </Grid.Resources>
-                        <TextBlock Grid.Column="0" />
-                        <TextBlock Grid.Column="1" />
-                        <TextBlock Grid.Column="2" />
-                        <TextBlock Grid.Column="3" />
-                        <TextBlock Grid.Column="4" />
-                        <TextBlock Grid.Column="5" />
-                        <TextBlock Grid.Column="6" />
-                        <TextBlock Grid.Column="7" />
-                        <TextBlock Grid.Column="8" />
-                        <TextBlock Grid.Column="9" />
-                        <TextBlock Grid.Column="10" />
-                        <TextBlock Grid.Column="11" />
-                        <TextBlock Grid.Column="12" />
-                        <TextBlock Grid.Column="13" />
-                        <TextBlock Grid.Column="14" />
+                        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="1" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="2" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="3" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="4" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="5" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="6" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="7" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="8" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="9" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="10" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="11" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="12" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="13" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="14" Style="{StaticResource TextBlockStyle}" />
                     </Grid>
 
                     <Grid Grid.Row="2"
@@ -129,35 +125,21 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Tag"
-                                        Value="NumberBlock" />
-                                <Setter Property="Background"
-                                        Value="White" />
-                                <Setter Property="HorizontalAlignment"
-                                        Value="Center" />
-                                <Setter Property="VerticalAlignment"
-                                        Value="Center" />
-                                <Setter Property="FontSize"
-                                        Value="13" />
-                            </Style>
-                        </Grid.Resources>
-                        <TextBlock Grid.Column="0" />
-                        <TextBlock Grid.Column="1" />
-                        <TextBlock Grid.Column="2" />
-                        <TextBlock Grid.Column="3" />
-                        <TextBlock Grid.Column="4" />
-                        <TextBlock Grid.Column="5" />
-                        <TextBlock Grid.Column="6" />
-                        <TextBlock Grid.Column="7" />
-                        <TextBlock Grid.Column="8" />
-                        <TextBlock Grid.Column="9" />
-                        <TextBlock Grid.Column="10" />
-                        <TextBlock Grid.Column="11" />
-                        <TextBlock Grid.Column="12" />
-                        <TextBlock Grid.Column="13" />
-                        <TextBlock Grid.Column="14" />
+                        <TextBlock Grid.Column="0" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="1" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="2" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="3" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="4" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="5" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="6" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="7" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="8" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="9" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="10" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="11" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="12" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="13" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Column="14" Style="{StaticResource TextBlockStyle}" />
                     </Grid>
 
                     <Grid Grid.Row="1"
@@ -181,35 +163,21 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Tag"
-                                        Value="NumberBlock" />
-                                <Setter Property="Background"
-                                        Value="White" />
-                                <Setter Property="HorizontalAlignment"
-                                        Value="Center" />
-                                <Setter Property="VerticalAlignment"
-                                        Value="Center" />
-                                <Setter Property="FontSize"
-                                        Value="13" />
-                            </Style>
-                        </Grid.Resources>
-                        <TextBlock Grid.Row="0" />
-                        <TextBlock Grid.Row="1" />
-                        <TextBlock Grid.Row="2" />
-                        <TextBlock Grid.Row="3" />
-                        <TextBlock Grid.Row="4" />
-                        <TextBlock Grid.Row="5" />
-                        <TextBlock Grid.Row="6" />
-                        <TextBlock Grid.Row="7" />
-                        <TextBlock Grid.Row="8" />
-                        <TextBlock Grid.Row="9" />
-                        <TextBlock Grid.Row="10" />
-                        <TextBlock Grid.Row="11" />
-                        <TextBlock Grid.Row="12" />
-                        <TextBlock Grid.Row="13" />
-                        <TextBlock Grid.Row="14" />
+                        <TextBlock Grid.Row="0" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="1" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="4" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="5" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="6" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="8" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="9" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="10" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="11" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="12" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="13" Style="{StaticResource TextBlockStyle}" />
+                        <TextBlock Grid.Row="14" Style="{StaticResource TextBlockStyle}" />
 
                     </Grid>
                     <Border Grid.Row="1"
@@ -234,51 +202,40 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
-                            <Grid.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Tag"
-                                            Value="NumberBlock" />
-                                    <Setter Property="Background"
-                                            Value="White" />
-                                    <Setter Property="HorizontalAlignment"
-                                            Value="Center" />
-                                    <Setter Property="VerticalAlignment"
-                                            Value="Center" />
-                                    <Setter Property="FontSize"
-                                            Value="13" />
-                                </Style>
-                            </Grid.Resources>
-                            <TextBlock Grid.Row="0" />
-                            <TextBlock Grid.Row="1" />
-                            <TextBlock Grid.Row="2" />
-                            <TextBlock Grid.Row="3" />
-                            <TextBlock Grid.Row="4" />
-                            <TextBlock Grid.Row="5" />
-                            <TextBlock Grid.Row="6" />
-                            <TextBlock Grid.Row="7" />
-                            <TextBlock Grid.Row="8" />
-                            <TextBlock Grid.Row="9" />
-                            <TextBlock Grid.Row="10" />
-                            <TextBlock Grid.Row="11" />
-                            <TextBlock Grid.Row="12" />
-                            <TextBlock Grid.Row="13" />
-                            <TextBlock Grid.Row="14" />
+                            <TextBlock Grid.Row="0" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="1" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="2" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="3" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="4" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="5" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="6" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="7" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="8" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="9" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="10" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="11" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="12" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="13" Style="{StaticResource TextBlockStyle}" />
+                            <TextBlock Grid.Row="14" Style="{StaticResource TextBlockStyle}" />
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black"
-                            BorderThickness="1,1,1,1"
+                            BorderThickness="1"
                             Grid.Row="1"
                             Grid.Column="1">
                         <Grid>
                             <Grid.Resources>
-                                <Style TargetType="Grid"
-                                       x:Key="PlayGridStyle">
-                                    <Setter Property="Tag"
-                                            Value="GameGrid" />
-                                    <Setter Property="Background"
-                                            Value="White" />
+                                <Style TargetType="Grid" x:Key="GameGridStyle">
+                                    <Setter Property="Tag" Value="GameGrid" />
+                                    <Setter Property="Background" Value="White" />
+                                </Style>
+
+                                <Style TargetType="Border" x:Key="ThinBorderStyle">
+                                    <Setter Property="BorderThickness" Value="0.25" />
+                                    <Setter Property="BorderBrush" Value="Black" />
                                 </Style>
                             </Grid.Resources>
+
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -296,7 +253,7 @@
                                 <RowDefinition />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Grid>
+                            <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition />
@@ -314,80 +271,50 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="1">
@@ -408,80 +335,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="2">
@@ -502,80 +400,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="3">
@@ -596,80 +465,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="4">
@@ -690,80 +530,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="5">
@@ -784,80 +595,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="6">
@@ -878,80 +660,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="7">
@@ -972,80 +725,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="8">
@@ -1066,80 +790,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="9">
@@ -1160,80 +855,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="10">
@@ -1254,80 +920,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="11">
@@ -1348,80 +985,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="12">
@@ -1442,80 +1050,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="13">
@@ -1536,80 +1115,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                             <Grid Grid.Row="14">
@@ -1630,80 +1180,51 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="0">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="0" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="1">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="1" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="2">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="2" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="3">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="3" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="4">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="4" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="5">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="5" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="6">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="6" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="7">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="7" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="8">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="8" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="9">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="9" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="10">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="10" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="11">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="11" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="12">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="12" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="13">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="13" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
                                 </Border>
-                                <Border BorderThickness="0.25"
-                                        BorderBrush="Black"
-                                        Grid.Column="14">
-                                    <Grid Style="{StaticResource PlayGridStyle}"></Grid>
+                                <Border Grid.Column="14" Style="{StaticResource ThinBorderStyle}">
+                                    <Grid Style="{StaticResource GameGridStyle}" />
+
                                 </Border>
                             </Grid>
                         </Grid>
@@ -1738,11 +1259,11 @@
                 </Style>
             </Grid.Resources>
 
-            <Button Grid.Row="0" x:Name="Save" Content="Save" Click="Save_Button_Click" />
-            <Button Grid.Row="1" x:Name="NewGame" Content="New Game" Click="NewGame_Button_Click" />
-            <Button Grid.Row="2" x:Name="Solve" Content="Solve" Click="Solve_Button_Click" />
-            <Button Grid.Row="3" x:Name="Hint" Content="Hint" Click="Hint_Button_Click" />
-            <Button Grid.Row="4" x:Name="Undo" Content="Undo" Click="Undo_Button_Click" />
+            <Button Grid.Row="0" x:Name="SaveButton" Content="Save" />
+            <Button Grid.Row="1" x:Name="NewGameButton" Content="New Game" />
+            <Button Grid.Row="2" x:Name="SolveButton" Content="Solve" />
+            <Button Grid.Row="3" x:Name="HintButton" Content="Hint" />
+            <Button Grid.Row="4" x:Name="UndoButton" Content="Undo" />
         </Grid>
 
     </Grid>

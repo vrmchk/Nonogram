@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media;
 using Nonogram.Enums;
 
 namespace Nonogram.Models;
@@ -9,29 +8,29 @@ namespace Nonogram.Models;
 internal class FieldGenerator
 {
     private Random _random;
-    private int _cellsCount;
+    private int _colorsCounts;
     private int _rowColSize;
 
     public FieldGenerator()
     {
-        _cellsCount = 225;
-        _rowColSize = Convert.ToInt32(Math.Sqrt(_cellsCount));
+        _colorsCounts = 225;
+        _rowColSize = Convert.ToInt32(Math.Sqrt(_colorsCounts));
         _random = new Random();
-        Cells = new List<Cell>(_cellsCount);
-        ColorCounts = new List<int>(_rowColSize * 4);
+        Cells = new List<Cell>(_colorsCounts);
+        ColorsCounts = new List<int>(_rowColSize * 4);
         FillCells();
         FillColorCounts();
     }
 
     public List<Cell> Cells { get; }
-    public List<int> ColorCounts { get; }
+    public List<int> ColorsCounts { get; }
 
     private void FillCells()
     {
-        Cells.Add(new Cell(GetRandomColor()));
-        for (int i = 1; i < _cellsCount; i++)
+        Cells.Add(new Cell(GetRandomColor(), 0));
+        for (int i = 1; i < _colorsCounts; i++)
         {
-            Cells.Add(new Cell(GetPossiblySimilarColor(Cells.Last().Color)));
+            Cells.Add(new Cell(GetPossiblySimilarColor(Cells.Last().Color), i));
         }
     }
 
@@ -80,7 +79,7 @@ internal class FieldGenerator
                     currentCount = 0;
             }
 
-            ColorCounts.Add(maxCount);
+            ColorsCounts.Add(maxCount);
         }
     }
 
@@ -104,7 +103,7 @@ internal class FieldGenerator
                     currentCount = 0;
             }
 
-            ColorCounts.Add(maxCount);
+            ColorsCounts.Add(maxCount);
         }
     }
 }
