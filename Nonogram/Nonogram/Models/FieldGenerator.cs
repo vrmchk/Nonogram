@@ -13,7 +13,7 @@ internal class FieldGenerator
 
     public FieldGenerator()
     {
-        _colorsCounts = 225;
+        _colorsCounts = Settings.CellsCount;
         _rowColSize = Convert.ToInt32(Math.Sqrt(_colorsCounts));
         _random = new Random();
         Cells = new List<Cell>(_colorsCounts);

@@ -19,7 +19,7 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     private readonly Field _field;
     private readonly FieldSaver _saver;
-    private readonly int _brushesCount = 225;
+    private readonly int _brushesCount = Settings.CellsCount; 
 
     #endregion
     
@@ -82,7 +82,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         bool cellFilled = _field.FillCell(cellIndex, color);
         if (!cellFilled)
         {
-            ChangeBrush(cellIndex, Printer.WrongBrush);
+            ChangeBrush(cellIndex, Settings.WrongBrush);
         }
 
         OnPropertyChanged(nameof(Brushes));
@@ -128,7 +128,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         try
         {
             Cell cell = _field.Undo();
-            ChangeBrush(cell.Coordinate, Printer.DefaultBrush);
+            ChangeBrush(cell.Coordinate, Settings.DefaultBrush);
             OnPropertyChanged(nameof(Brushes));
         }
         catch (Exception ex)
@@ -156,7 +156,7 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     private void Cell_Changed_On_Field(Cell sender)
     {
-        ChangeBrush(sender.Coordinate, sender.Color == CellColor.First ? Printer.Brush1 : Printer.Brush2);
+        ChangeBrush(sender.Coordinate, sender.Color == CellColor.First ? Settings.Brush1 : Settings.Brush2);
         OnPropertyChanged(nameof(Brushes));
     }
 
@@ -171,7 +171,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         Brushes = new List<Brush>();
         for (int i = 0; i < _brushesCount; i++)
         {
-            Brushes.Add(Printer.DefaultBrush);
+            Brushes.Add(Settings.DefaultBrush);
         }
 
         OnPropertyChanged(nameof(Brushes));
