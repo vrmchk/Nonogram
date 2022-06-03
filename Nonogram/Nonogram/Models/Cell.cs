@@ -29,5 +29,5 @@ internal class Cell
         }
     }
 
-    public event CellChangedHandler CellChanged;
+    public event CellChangedHandler? CellChanged;
 }

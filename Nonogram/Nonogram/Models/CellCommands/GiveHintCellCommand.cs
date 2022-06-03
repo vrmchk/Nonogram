@@ -1,10 +1,8 @@
-﻿using System.Windows.Media;
-
-namespace Nonogram.Models.CellCommans;
+﻿namespace Nonogram.Models.CellCommands;
 
 internal class GiveHintCellCommand : ICellCommand
 {
-    private Cell _cell;
+    private readonly Cell _cell;
 
     public GiveHintCellCommand(Cell cell) => _cell = cell;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Nonogram.Enums;
-using Nonogram.Models.CellCommans;
+using Nonogram.Models.CellCommands;
 
 namespace Nonogram.Models;
 
@@ -25,8 +25,8 @@ internal class Field
 
     public List<int> ColorsCounts { get; private set; }
 
-    public event GameFinishedHandler GameFinished;
-    public event CellChangedOnFieldHandler CellChangedOnField;
+    public event GameFinishedHandler? GameFinished;
+    public event CellChangedOnFieldHandler? CellChangedOnField;
 
     public void GenerateNewField()
     {
@@ -50,9 +50,17 @@ internal class Field
         _cells = cells;
         ColorsCounts = colorsCounts;
         _hintsLeft = hintsLeft;
+        if (IsSolved())
+        {
+            GenerateNewField();
+            throw new InvalidOperationException("Existing game was already solved");
+        }
+
         _cells.ForEach(c => c.CellChanged += Cell_Changed);
         _cells.Where(c => c.IsFound).ToList().ForEach(Cell_Changed);
     }
+
+    public bool CanFillCell(int cellIndex) => !_cells[cellIndex].IsFound;
 
     public bool FillCell(int cellIndex, CellColor color)
     {
@@ -62,10 +70,10 @@ internal class Field
         return cellCommand.WasExecuted;
     }
 
-    public bool CanFillCell(int cellIndex) => !_cells[cellIndex].IsFound;
-
     public void GiveHint()
     {
+        if (IsSolved())
+            throw new InvalidOperationException("Game is already solved");
         if (_hintsLeft-- <= 0)
             throw new InvalidOperationException("No more hints left");
 
@@ -76,20 +84,22 @@ internal class Field
         _commandsHistory.Push(cellCommand);
     }
 
-    public int Undo()
+    public Cell Undo()
     {
         if (_commandsHistory.Count == 0)
             throw new InvalidOperationException("Nothing to undo");
 
         ICellCommand cellCommand = _commandsHistory.Pop();
         Cell cell = cellCommand.Undo();
-        return cell.Coordinate;
+        return cell;
     }
 
     public void Solve()
     {
-        if (!IsSolved())
-            _cells.ForEach(c => c.IsFound = true);
+        if (IsSolved())
+            throw new InvalidOperationException("Game is already solved");
+        
+        _cells.Where(c => !c.IsFound).ToList().ForEach(c => FillCell(c.Coordinate, c.Color));
     }
 
     private bool IsSolved() => _cells.All(c => c.IsFound);

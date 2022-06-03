@@ -24,8 +24,7 @@
                FontSize="24">
         </Label>
 
-        <Grid x:Name="ButtonGrid"
-              Grid.Row="1">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -39,6 +38,7 @@
                     <Setter Property="FontSize" Value="18" />
                 </Style>
             </Grid.Resources>
+            
             <Button Grid.Row="0" x:Name="NewGameButton" Content="New Game" Click="Button_Click" />
             <Button Grid.Row="1" x:Name="ContinueButton" Content="Continue" Click="Button_Click" />
         </Grid>

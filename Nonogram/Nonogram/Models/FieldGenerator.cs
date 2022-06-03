@@ -7,9 +7,9 @@ namespace Nonogram.Models;
 
 internal class FieldGenerator
 {
-    private Random _random;
-    private int _colorsCounts;
-    private int _rowColSize;
+    private readonly Random _random;
+    private readonly int _colorsCounts;
+    private readonly int _rowColSize;
 
     public FieldGenerator()
     {

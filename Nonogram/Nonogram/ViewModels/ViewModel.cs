@@ -15,20 +15,24 @@ namespace Nonogram.ViewModels;
 
 public sealed class ViewModel : INotifyPropertyChanged
 {
-    private static ViewModel? _instance;
+    #region Fields
+
     private readonly Field _field;
     private readonly FieldSaver _saver;
     private readonly int _brushesCount = 225;
 
-    private ViewModel()
+    #endregion
+    
+    #region Constructors
+
+    public ViewModel()
     {
-        MessageBox.Show("object created");
         _field = new Field();
         _saver = new FieldSaver(_field);
         _field.GameFinished += Game_Finished;
         _field.CellChangedOnField += Cell_Changed_On_Field;
-        FillCellWithFirstColorCommand = new RelayCommand(FillCellWithFirstColor, CanDoMouseClick);
-        FillCellWithSecondColorCommand = new RelayCommand(FillCellWithSecondColor, CanDoMouseClick);
+        FillCellWithFirstColorCommand = new RelayCommand(FillCellWithFirstColor, CanFillCell);
+        FillCellWithSecondColorCommand = new RelayCommand(FillCellWithSecondColor, CanFillCell);
         SaveCommand = new RelayCommand(Save);
         LoadExistingGameCommand = new RelayCommand(LoadExistingGame);
         NewGameCommand = new RelayCommand(NewGame);
@@ -36,11 +40,17 @@ public sealed class ViewModel : INotifyPropertyChanged
         GiveHintCommand = new RelayCommand(GiveHint);
         UndoCommand = new RelayCommand(Undo);
         FillBrushesByDefault();
-        FillNumberBlocksText();
+        FillColorCounts();
     }
+
+    #endregion
+
+    #region BindingProperties
 
     public List<Brush> Brushes { get; set; }
     public List<string> ColorsCounts { get; set; }
+
+    #endregion
 
     #region Commands
 
@@ -55,20 +65,7 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #endregion
 
-
-    public static ViewModel GetInstance()
-    {
-        return _instance ??= new ViewModel();
-    }
-    
-    private void Cell_Changed_On_Field(Cell sender)
-    {
-        ChangeBrush(sender.Coordinate, sender.Color == CellColor.First ? Printer.Brush1 : Printer.Brush2);
-        OnPropertyChanged(nameof(Brushes));
-    }
-
-    private void Game_Finished() => MessageBox.Show("Well done!!!");
-
+    #region CommandsMethods
 
     private void FillCellWithFirstColor(object p)
     {
@@ -91,18 +88,28 @@ public sealed class ViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(Brushes));
     }
 
-    private bool CanDoMouseClick(object p) => _field.CanFillCell(Convert.ToInt32(p));
+    private bool CanFillCell(object p) => _field.CanFillCell(Convert.ToInt32(p));
 
     private void Save(object p) => _saver.Save();
 
     private void NewGame(object p)
     {
         _field.GenerateNewField();
-        FillNumberBlocksText();
+        FillColorCounts();
         FillBrushesByDefault();
     }
 
-    private void Solve(object p) => _field.Solve();
+    private void Solve(object p)
+    {
+        try
+        {
+            _field.Solve();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+    }
 
     private void GiveHint(object p)
     {
@@ -120,8 +127,8 @@ public sealed class ViewModel : INotifyPropertyChanged
     {
         try
         {
-            int cellIndex = _field.Undo();
-            ChangeBrush(cellIndex, Printer.DefaultBrush);
+            Cell cell = _field.Undo();
+            ChangeBrush(cell.Coordinate, Printer.DefaultBrush);
             OnPropertyChanged(nameof(Brushes));
         }
         catch (Exception ex)
@@ -135,13 +142,29 @@ public sealed class ViewModel : INotifyPropertyChanged
         try
         {
             _saver.LoadExistingGame();
-            FillNumberBlocksText();
+            FillColorCounts();
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            MessageBox.Show("New game has been created\n" + ex.Message);
         }
     }
+
+    #endregion
+
+    #region FieldEventHandlers
+
+    private void Cell_Changed_On_Field(Cell sender)
+    {
+        ChangeBrush(sender.Coordinate, sender.Color == CellColor.First ? Printer.Brush1 : Printer.Brush2);
+        OnPropertyChanged(nameof(Brushes));
+    }
+
+    private void Game_Finished() => MessageBox.Show("Well done!!!");
+
+    #endregion
+
+    #region PrivateMethods
 
     private void FillBrushesByDefault()
     {
@@ -154,7 +177,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(Brushes));
     }
 
-    private void FillNumberBlocksText()
+    private void FillColorCounts()
     {
         ColorsCounts = _field.ColorsCounts.Select(i => i.ToString()).ToList();
         OnPropertyChanged(nameof(ColorsCounts));
@@ -168,6 +191,10 @@ public sealed class ViewModel : INotifyPropertyChanged
         Brushes[brushIndex] = brush;
     }
 
+    #endregion
+
+    #region INotifyAttributes
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     [NotifyPropertyChangedInvocator]
@@ -175,4 +202,6 @@ public sealed class ViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+    #endregion
 }

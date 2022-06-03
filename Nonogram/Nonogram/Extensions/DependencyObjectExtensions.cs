@@ -9,7 +9,8 @@ public static class DependencyObjectExtensions
     public static IEnumerable<T> GetVisualChildren<T>(this DependencyObject? depObj) where T : DependencyObject
     {
         if (depObj == null) yield break;
-        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+        int childrenCount = VisualTreeHelper.GetChildrenCount(depObj);
+        for (int i = 0; i < childrenCount; i++)
         {
             DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
             if (child is T t)

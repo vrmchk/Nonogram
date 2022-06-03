@@ -1,6 +1,4 @@
-﻿using System.Windows.Media;
-
-namespace Nonogram.Models.CellCommans;
+﻿namespace Nonogram.Models.CellCommands;
 
 internal interface ICellCommand
 {

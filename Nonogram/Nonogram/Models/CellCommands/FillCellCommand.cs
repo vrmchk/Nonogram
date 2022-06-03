@@ -1,12 +1,11 @@
-﻿using System.Windows.Media;
-using Nonogram.Enums;
+﻿using Nonogram.Enums;
 
-namespace Nonogram.Models.CellCommans;
+namespace Nonogram.Models.CellCommands;
 
 internal class FillCellCommand : ICellCommand
 {
-    private Cell _cell;
-    private CellColor _color;
+    private readonly Cell _cell;
+    private readonly CellColor _color;
 
 
     public FillCellCommand(Cell cell, CellColor color)

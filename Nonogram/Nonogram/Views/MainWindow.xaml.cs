@@ -19,16 +19,48 @@ namespace Nonogram.Views
         private readonly List<Grid> _gameGrids;
         private readonly List<TextBlock> _numberBlocks;
 
-        public MainWindow()
+        public MainWindow(ViewModel viewModel)
         {
             InitializeComponent();
-            _viewModel = ViewModel.GetInstance();
+            _viewModel = viewModel;
             _gameGrids = GameField.GetVisualChildren<Grid>().Where(g => g.Tag?.ToString() == "GameGrid").ToList();
             _numberBlocks = GameField.GetVisualChildren<TextBlock>().Where(g => g.Tag?.ToString() == "NumberBlock").ToList();
             InitializeNumberBlocksBindings();
             InitializeGameGridsBindings();
             InitializeButtonsCommands();
             InitializeGameGridsCommands();
+        }
+
+        private void InitializeNumberBlocksBindings()
+        {
+            int index = 0;
+            foreach (TextBlock block in _numberBlocks)
+            {
+                Binding binding = new Binding
+                {
+                    Source = _viewModel,
+                    Path = new PropertyPath($"ColorsCounts[{index++}]"),
+                    Mode = BindingMode.TwoWay,
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                };
+                BindingOperations.SetBinding(block, TextBlock.TextProperty, binding);
+            }
+        }
+
+        private void InitializeGameGridsBindings()
+        {
+            int index = 0;
+            foreach (Grid grid in _gameGrids)
+            {
+                Binding binding = new Binding
+                {
+                    Source = _viewModel,
+                    Path = new PropertyPath($"Brushes[{index++}]"),
+                    Mode = BindingMode.TwoWay,
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                };
+                BindingOperations.SetBinding(grid, Grid.BackgroundProperty, binding);
+            }
         }
 
         private void InitializeButtonsCommands()
@@ -55,38 +87,6 @@ namespace Nonogram.Views
                     MouseAction = MouseAction.RightClick, Command = _viewModel.FillCellWithSecondColorCommand,
                     CommandParameter = i
                 });
-            }
-        }
-
-        private void InitializeGameGridsBindings()
-        {
-            int index = 0;
-            foreach (Grid grid in _gameGrids)
-            {
-                Binding binding = new Binding()
-                {
-                    Source = _viewModel,
-                    Path = new PropertyPath($"Brushes[{index++}]"),
-                    Mode = BindingMode.TwoWay,
-                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                };
-                BindingOperations.SetBinding(grid, Grid.BackgroundProperty, binding);
-            }
-        }
-
-        private void InitializeNumberBlocksBindings()
-        {
-            int index = 0;
-            foreach (TextBlock block in _numberBlocks)
-            {
-                Binding binding = new Binding()
-                {
-                    Source = _viewModel,
-                    Path = new PropertyPath($"ColorsCounts[{index++}]"),
-                    Mode = BindingMode.TwoWay,
-                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
-                };
-                BindingOperations.SetBinding(block, TextBlock.TextProperty, binding);
             }
         }
     }
