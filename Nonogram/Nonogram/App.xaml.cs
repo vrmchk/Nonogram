@@ -12,18 +12,21 @@ namespace Nonogram
     public partial class App : Application
     {
         private ViewModel _viewModel;
+        private MenuWindow _menuWindow;
+        private MainWindow _mainWindow;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             _viewModel = new ViewModel();
-            MenuWindow menuWindow = new MenuWindow(_viewModel);
-            menuWindow.Show();
-            menuWindow.GameModeChosen += Game_Mode_Chosen;
+            _menuWindow = new MenuWindow(_viewModel);
+            _menuWindow.Show();
+            _menuWindow.GameModeChosen += Game_Mode_Chosen;
         }
 
         private void Game_Mode_Chosen()
         {
-            MainWindow mainWindow = new MainWindow(_viewModel);
-            mainWindow.Show();
+            _mainWindow = new MainWindow(_viewModel);
+            _mainWindow.Show();
         }
     }
 }
