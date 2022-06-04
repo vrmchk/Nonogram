@@ -6,8 +6,6 @@ using Nonogram.Models.CellCommands;
 
 namespace Nonogram.Models;
 
-internal delegate void GameFinishedHandler();
-
 internal delegate void CellChangedOnFieldHandler(Cell sender);
 
 internal class Field
@@ -25,7 +23,7 @@ internal class Field
 
     public List<int> ColorsCounts { get; private set; }
 
-    public event GameFinishedHandler? GameFinished;
+    public event Action? GameFinished;
     public event CellChangedOnFieldHandler? CellChangedOnField;
 
     public void GenerateNewField()
@@ -50,12 +48,6 @@ internal class Field
         _cells = cells;
         ColorsCounts = colorsCounts;
         _hintsLeft = hintsLeft;
-        if (IsSolved())
-        {
-            GenerateNewField();
-            throw new InvalidOperationException("Existing game was already solved");
-        }
-
         _cells.ForEach(c => c.CellChanged += Cell_Changed);
         _cells.Where(c => c.IsFound).ToList().ForEach(Cell_Changed);
     }
@@ -74,6 +66,7 @@ internal class Field
     {
         if (IsSolved())
             throw new InvalidOperationException("Game is already solved");
+       
         if (_hintsLeft-- <= 0)
             throw new InvalidOperationException("No more hints left");
 
@@ -98,7 +91,7 @@ internal class Field
     {
         if (IsSolved())
             throw new InvalidOperationException("Game is already solved");
-        
+
         _cells.Where(c => !c.IsFound).ToList().ForEach(c => FillCell(c.Coordinate, c.Color));
     }
 
