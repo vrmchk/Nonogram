@@ -27,7 +27,7 @@ internal class FillCellCommand : ICellCommand
         _cell.IsFound = true;
         WasExecuted = true;
     }
-
+    
     public Cell Undo()
     {
         _cell.IsFound = false;
