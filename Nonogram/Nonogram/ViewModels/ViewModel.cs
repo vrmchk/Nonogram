@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -13,6 +14,7 @@ using Nonogram.Models;
 
 namespace Nonogram.ViewModels;
 
+public delegate void ShowMessageEventHandler(string message);
 public sealed class ViewModel : INotifyPropertyChanged
 {
     #region Fields
@@ -107,7 +109,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            ShowMessage?.Invoke(ex.Message);
         }
     }
 
@@ -119,7 +121,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            ShowMessage?.Invoke(ex.Message);
         }
     }
 
@@ -133,7 +135,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
+            ShowMessage?.Invoke(ex.Message);
         }
     }
 
@@ -144,9 +146,13 @@ public sealed class ViewModel : INotifyPropertyChanged
             _saver.LoadExistingGame();
             FillColorCounts();
         }
+        catch (FileNotFoundException fileEx)
+        {
+            ShowMessage?.Invoke("Saving file doesn't exist");
+        }
         catch (Exception ex)
         {
-            MessageBox.Show("New game has been created\n" + ex.Message);
+            ShowMessage?.Invoke(ex.Message);
         }
     }
 
@@ -160,7 +166,7 @@ public sealed class ViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(Brushes));
     }
 
-    private void Game_Finished() => MessageBox.Show("Well done!!!");
+    private void Game_Finished() => ShowMessage?.Invoke("Well done!!!");
 
     #endregion
 
@@ -193,8 +199,9 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #endregion
 
-    #region INotifyAttributes
+    #region EventsAndInvocators
 
+    public event ShowMessageEventHandler? ShowMessage;
     public event PropertyChangedEventHandler? PropertyChanged;
 
     [NotifyPropertyChangedInvocator]

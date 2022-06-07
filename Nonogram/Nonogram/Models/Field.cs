@@ -6,7 +6,7 @@ using Nonogram.Models.CellCommands;
 
 namespace Nonogram.Models;
 
-internal delegate void CellChangedOnFieldHandler(Cell sender);
+internal delegate void CellChangedOnFieldEventHandler(Cell sender);
 
 internal class Field
 {
@@ -24,7 +24,7 @@ internal class Field
     public List<int> ColorsCounts { get; private set; }
 
     public event Action? GameFinished;
-    public event CellChangedOnFieldHandler? CellChangedOnField;
+    public event CellChangedOnFieldEventHandler? CellChangedOnField;
 
     public void GenerateNewField()
     {

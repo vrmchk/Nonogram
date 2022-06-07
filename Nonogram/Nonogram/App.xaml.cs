@@ -18,6 +18,7 @@ namespace Nonogram
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             _viewModel = new ViewModel();
+            _viewModel.ShowMessage += mess => MessageBox.Show(mess);
             _menuWindow = new MenuWindow(_viewModel);
             _menuWindow.Show();
             _menuWindow.GameModeChosen += Game_Mode_Chosen;

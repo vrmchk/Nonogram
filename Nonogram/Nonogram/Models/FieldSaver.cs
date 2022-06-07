@@ -35,7 +35,7 @@ internal class FieldSaver
 
             SerializableField? fromJson = JsonSerializer.Deserialize<SerializableField>(fileText);
             if (fromJson == null)
-                throw new NullReferenceException("Unable to deserialize a file");
+                throw new NullReferenceException("File data were incorrect");
 
             _field.LoadExistingGame(fromJson.Cells, fromJson.ColorsCounts, fromJson.HintsLeft);
         }

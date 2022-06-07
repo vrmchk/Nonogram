@@ -3,7 +3,7 @@
 
 namespace Nonogram.Models;
 
-internal delegate void CellChangedHandler(Cell sender);
+internal delegate void CellChangedEventHandler(Cell sender);
 
 internal class Cell
 {
@@ -29,5 +29,5 @@ internal class Cell
         }
     }
 
-    public event CellChangedHandler? CellChanged;
+    public event CellChangedEventHandler? CellChanged;
 }
