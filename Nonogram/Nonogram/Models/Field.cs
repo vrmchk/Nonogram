@@ -76,7 +76,7 @@ internal class Field
         cellCommand.Execute();
         _commandsHistory.Push(cellCommand);
     }
-
+    
     public Cell Undo()
     {
         if (_commandsHistory.Count == 0)

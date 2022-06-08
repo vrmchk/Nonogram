@@ -27,21 +27,27 @@ internal class FieldSaver
 
     public void LoadExistingGame()
     {
-        using (StreamReader reader = new StreamReader(_pathToSavedField))
+        try
         {
-            string fileText = reader.ReadToEnd();
-            if (fileText == string.Empty)
-                throw new InvalidOperationException("Game wasn't saved before");
+            using (StreamReader reader = new StreamReader(_pathToSavedField))
+            {
+                string fileText = reader.ReadToEnd();
+                if (fileText == string.Empty)
+                    throw new InvalidOperationException("Game hasn't been saved");
 
-            SerializableField? fromJson = JsonSerializer.Deserialize<SerializableField>(fileText);
-            if (fromJson == null)
-                throw new NullReferenceException("File data were incorrect");
+                SerializableField? fromJson = JsonSerializer.Deserialize<SerializableField>(fileText);
+                if (fromJson == null)
+                    throw new NullReferenceException("File data were incorrect");
 
-            _field.LoadExistingGame(fromJson.Cells, fromJson.ColorsCounts, fromJson.HintsLeft);
+                _field.LoadExistingGame(fromJson.Cells, fromJson.ColorsCounts, fromJson.HintsLeft);
+            }
         }
-
-        ClearExistingGame();
+        catch (FileNotFoundException)
+        {
+            throw new FileNotFoundException("Saving file doesn't exist");
+        }
+        RewriteFile();
     }
 
-    private void ClearExistingGame() => File.Create(_pathToSavedField).Close();
+    private void RewriteFile() => File.Create(_pathToSavedField).Close();
 }

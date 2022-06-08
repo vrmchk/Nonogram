@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Nonogram.Annotations;
@@ -15,16 +13,17 @@ using Nonogram.Models;
 namespace Nonogram.ViewModels;
 
 public delegate void ShowMessageEventHandler(string message);
+
 public sealed class ViewModel : INotifyPropertyChanged
 {
     #region Fields
 
     private readonly Field _field;
     private readonly FieldSaver _saver;
-    private readonly int _brushesCount = Settings.CellsCount; 
+    private readonly int _brushesCount = Settings.CellsCount;
 
     #endregion
-    
+
     #region Constructors
 
     public ViewModel()
@@ -49,7 +48,10 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #region BindingProperties
 
+    //Brushes, binded with _field CellColors
     public List<Brush> Brushes { get; set; }
+
+    //ColorsCounts, binded with _field ColorsCounts
     public List<string> ColorsCounts { get; set; }
 
     #endregion
@@ -83,9 +85,7 @@ public sealed class ViewModel : INotifyPropertyChanged
     {
         bool cellFilled = _field.FillCell(cellIndex, color);
         if (!cellFilled)
-        {
             ChangeBrush(cellIndex, Settings.WrongBrush);
-        }
 
         OnPropertyChanged(nameof(Brushes));
     }
@@ -145,10 +145,6 @@ public sealed class ViewModel : INotifyPropertyChanged
         {
             _saver.LoadExistingGame();
             FillColorCounts();
-        }
-        catch (FileNotFoundException fileEx)
-        {
-            ShowMessage?.Invoke("Saving file doesn't exist");
         }
         catch (Exception ex)
         {
