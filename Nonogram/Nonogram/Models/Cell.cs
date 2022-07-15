@@ -1,33 +1,39 @@
-﻿using Nonogram.Enums;
-
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Nonogram.Annotations;
+using Nonogram.Enums;
 
 namespace Nonogram.Models;
 
-internal delegate void CellChangedEventHandler(Cell sender);
-
-internal class Cell
+internal class Cell : INotifyPropertyChanged
 {
-    private bool _isFound;
+    private CellState _state;
 
-    public Cell(CellColor color, int coordinate)
+    public Cell(CellColor color, int index)
     {
         Color = color;
-        Coordinate = coordinate;
-        IsFound = false;
+        Index = index;
+        State = CellState.NotFound;
     }
 
     public CellColor Color { get; }
-    public int Coordinate { get; }
+    public int Index { get; }
 
-    public bool IsFound
+    public CellState State
     {
-        get => _isFound;
+        get => _state;
         set
         {
-            _isFound = value;
-            CellChanged?.Invoke(this);
+            _state = value;
+            OnPropertyChanged(nameof(State));
         }
     }
 
-    public event CellChangedEventHandler? CellChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }

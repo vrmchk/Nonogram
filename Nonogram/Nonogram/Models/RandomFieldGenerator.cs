@@ -5,17 +5,15 @@ using Nonogram.Enums;
 
 namespace Nonogram.Models;
 
-internal class FieldGenerator
+internal class RandomFieldGenerator : IFieldGenerator
 {
-    private readonly Random _random;
-    private readonly int _colorsCounts;
-    private readonly int _rowColSize;
+    private readonly Random _random = new();
+    private readonly int _colorsCounts = Settings.CellsCount;
+    private readonly int _rowColSize = Convert.ToInt32(Math.Sqrt(Settings.CellsCount));
 
-    public FieldGenerator()
+    public RandomFieldGenerator(int hintsLeft = 3)
     {
-        _colorsCounts = Settings.CellsCount;
-        _rowColSize = Convert.ToInt32(Math.Sqrt(_colorsCounts));
-        _random = new Random();
+        HintsLeft = hintsLeft;
         Cells = new List<Cell>(_colorsCounts);
         ColorsCounts = new List<int>(_rowColSize * 4);
         FillCells();
@@ -24,6 +22,7 @@ internal class FieldGenerator
 
     public List<Cell> Cells { get; }
     public List<int> ColorsCounts { get; }
+    public int HintsLeft { get; }
 
     private void FillCells()
     {

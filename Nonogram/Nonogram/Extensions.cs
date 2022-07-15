@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using Nonogram.Models;
 
-namespace Nonogram.Extensions;
+namespace Nonogram;
 
-public static class DependencyObjectExtensions
+internal static class Extensions
 {
     public static IEnumerable<T> GetVisualChildren<T>(this DependencyObject? depObj) where T : DependencyObject
     {
@@ -22,4 +23,11 @@ public static class DependencyObjectExtensions
             }
         }
     }
+
+    public static SerializableField AsSerializable(this Field source)
+    {
+        var (cells, colorsCounts, hintsLeft) = source;
+        return new SerializableField(cells, colorsCounts, hintsLeft);
+    }
+
 }

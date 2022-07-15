@@ -1,39 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Nonogram.Enums;
 using Nonogram.Models.CellCommands;
 
 namespace Nonogram.Models;
 
-internal delegate void CellChangedOnFieldEventHandler(Cell sender);
-
 internal class Field
 {
     private List<Cell> _cells;
     private Stack<ICellCommand> _commandsHistory;
     private int _hintsLeft;
-    private readonly Random _random;
+    private readonly Random _random = new();
 
-    public Field()
+    public Field(IFieldGenerator generator)
     {
-        _random = new Random();
-        GenerateNewField();
+        GenerateNewField(generator);
     }
 
     public List<int> ColorsCounts { get; private set; }
 
     public event Action? GameFinished;
-    public event CellChangedOnFieldEventHandler? CellChangedOnField;
+    public event EventHandler? CellChanged;
 
-    public void GenerateNewField()
+    public void GenerateNewField(IFieldGenerator generator)
     {
-        _hintsLeft = 3;
         _commandsHistory = new Stack<ICellCommand>();
-        FieldGenerator generator = new FieldGenerator();
         _cells = generator.Cells;
         ColorsCounts = generator.ColorsCounts;
-        _cells.ForEach(c => c.CellChanged += Cell_Changed);
+        _hintsLeft = generator.HintsLeft;
+        _cells.ForEach(c => c.PropertyChanged += Cell_Property_Changed);
+        _cells.Where(c => c.State != CellState.NotFound).ToList().ForEach(c => Cell_Property_Changed(c));
     }
 
     public void Deconstruct(out List<Cell> cells, out List<int> colorsCounts, out int hintsLeft)
@@ -43,48 +41,39 @@ internal class Field
         hintsLeft = _hintsLeft;
     }
 
-    public void LoadExistingGame(List<Cell> cells, List<int> colorsCounts, int hintsLeft)
-    {
-        _cells = cells;
-        ColorsCounts = colorsCounts;
-        _hintsLeft = hintsLeft;
-        _cells.ForEach(c => c.CellChanged += Cell_Changed);
-        _cells.Where(c => c.IsFound).ToList().ForEach(Cell_Changed);
-    }
+    public bool CanFillCell(int cellIndex) => _cells[cellIndex].State != CellState.Found;
 
-    public bool CanFillCell(int cellIndex) => !_cells[cellIndex].IsFound;
-
-    public bool FillCell(int cellIndex, CellColor color)
+    public void FillCell(int cellIndex, CellColor color)
     {
         FillCellCommand cellCommand = new FillCellCommand(_cells[cellIndex], color);
         cellCommand.Execute();
         _commandsHistory.Push(cellCommand);
-        return cellCommand.WasExecuted;
     }
 
     public void GiveHint()
     {
         if (IsSolved())
             throw new InvalidOperationException("Game is already solved");
-       
+
         if (_hintsLeft-- <= 0)
             throw new InvalidOperationException("No more hints left");
 
-        var notFound = _cells.Where(c => !c.IsFound).ToList();
-        Cell randomCell = notFound[_random.Next(notFound.Count)];
+        var notFoundCells = _cells.Where(c => c.State == CellState.NotFound).ToArray();
+        var incorrectCells = _cells.Where(c => c.State == CellState.FoundIncorrect).ToArray();
+        var cellsToPeekRandom = notFoundCells.Length != 0 ? notFoundCells : incorrectCells;
+        Cell randomCell = cellsToPeekRandom[_random.Next(cellsToPeekRandom.Length)];
         GiveHintCellCommand cellCommand = new GiveHintCellCommand(randomCell);
         cellCommand.Execute();
         _commandsHistory.Push(cellCommand);
     }
-    
-    public Cell Undo()
+
+    public void Undo()
     {
         if (_commandsHistory.Count == 0)
             throw new InvalidOperationException("Nothing to undo");
 
         ICellCommand cellCommand = _commandsHistory.Pop();
-        Cell cell = cellCommand.Undo();
-        return cell;
+        cellCommand.Undo();
     }
 
     public void Solve()
@@ -92,14 +81,14 @@ internal class Field
         if (IsSolved())
             throw new InvalidOperationException("Game is already solved");
 
-        _cells.Where(c => !c.IsFound).ToList().ForEach(c => FillCell(c.Coordinate, c.Color));
+        _cells.Where(c => c.State != CellState.Found).ToList().ForEach(c => FillCell(c.Index, c.Color));
     }
 
-    private bool IsSolved() => _cells.All(c => c.IsFound);
+    private bool IsSolved() => _cells.All(cell => cell.State != CellState.NotFound);
 
-    private void Cell_Changed(Cell sender)
+    private void Cell_Property_Changed(object? sender, PropertyChangedEventArgs? e = null)
     {
-        CellChangedOnField?.Invoke(sender);
+        CellChanged?.Invoke(sender, EventArgs.Empty);
         if (IsSolved())
             GameFinished?.Invoke();
     }

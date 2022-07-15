@@ -12,8 +12,6 @@ using Nonogram.Models;
 
 namespace Nonogram.ViewModels;
 
-public delegate void ShowMessageEventHandler(string message);
-
 public sealed class ViewModel : INotifyPropertyChanged
 {
     #region Fields
@@ -28,12 +26,12 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     public ViewModel()
     {
-        _field = new Field();
+        _field = new Field(new RandomFieldGenerator());
         _saver = new FieldSaver(_field);
         _field.GameFinished += Game_Finished;
-        _field.CellChangedOnField += Cell_Changed_On_Field;
-        FillCellWithFirstColorCommand = new RelayCommand(FillCellWithFirstColor, CanFillCell);
-        FillCellWithSecondColorCommand = new RelayCommand(FillCellWithSecondColor, CanFillCell);
+        _field.CellChanged += Cell_Changed;
+        FillCellWithColor1Command = new RelayCommand(FillCellWithColor1, CanFillCell);
+        FillCellWithColor2Command = new RelayCommand(FillCellWithColor2, CanFillCell);
         SaveCommand = new RelayCommand(Save);
         LoadExistingGameCommand = new RelayCommand(LoadExistingGame);
         NewGameCommand = new RelayCommand(NewGame);
@@ -58,8 +56,8 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #region Commands
 
-    public ICommand FillCellWithFirstColorCommand { get; }
-    public ICommand FillCellWithSecondColorCommand { get; }
+    public ICommand FillCellWithColor1Command { get; }
+    public ICommand FillCellWithColor2Command { get; }
     public ICommand LoadExistingGameCommand { get; }
     public ICommand SaveCommand { get; }
     public ICommand NewGameCommand { get; }
@@ -71,24 +69,11 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #region CommandsMethods
 
-    private void FillCellWithFirstColor(object p)
-    {
-        FillCellWithColor(Convert.ToInt32(p), CellColor.First);
-    }
+    private void FillCellWithColor1(object p) => FillCell(Convert.ToInt32(p), CellColor.First);
 
-    private void FillCellWithSecondColor(object p)
-    {
-        FillCellWithColor(Convert.ToInt32(p), CellColor.Second);
-    }
+    private void FillCellWithColor2(object p) => FillCell(Convert.ToInt32(p), CellColor.Second);
 
-    private void FillCellWithColor(int cellIndex, CellColor color)
-    {
-        bool cellFilled = _field.FillCell(cellIndex, color);
-        if (!cellFilled)
-            ChangeBrush(cellIndex, Settings.WrongBrush);
-
-        OnPropertyChanged(nameof(Brushes));
-    }
+    private void FillCell(int cellIndex, CellColor color) => _field.FillCell(cellIndex, color);
 
     private bool CanFillCell(object p) => _field.CanFillCell(Convert.ToInt32(p));
 
@@ -96,9 +81,9 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     private void NewGame(object p)
     {
-        _field.GenerateNewField();
-        FillColorCounts();
+        _field.GenerateNewField(new RandomFieldGenerator());
         FillBrushesByDefault();
+        FillColorCounts();
     }
 
     private void Solve(object p)
@@ -129,9 +114,7 @@ public sealed class ViewModel : INotifyPropertyChanged
     {
         try
         {
-            Cell cell = _field.Undo();
-            ChangeBrush(cell.Coordinate, Settings.DefaultBrush);
-            OnPropertyChanged(nameof(Brushes));
+            _field.Undo();
         }
         catch (Exception ex)
         {
@@ -143,7 +126,8 @@ public sealed class ViewModel : INotifyPropertyChanged
     {
         try
         {
-            _saver.LoadExistingGame();
+            IFieldGenerator fieldGenerator = _saver.GetExistingFieldGenerator();
+            _field.GenerateNewField(fieldGenerator);
             FillColorCounts();
         }
         catch (Exception ex)
@@ -156,13 +140,20 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     #region FieldEventHandlers
 
-    private void Cell_Changed_On_Field(Cell sender)
-    {
-        ChangeBrush(sender.Coordinate, sender.Color == CellColor.First ? Settings.Brush1 : Settings.Brush2);
-        OnPropertyChanged(nameof(Brushes));
-    }
-
     private void Game_Finished() => ShowMessage?.Invoke("Well done!!!");
+
+    private void Cell_Changed(object? sender, EventArgs e)
+    {
+        Cell cell = (Cell) sender!;
+        Brush brush = cell.State switch
+        {
+            CellState.NotFound => Settings.DefaultBrush,
+            CellState.FoundIncorrect => Settings.WrongBrush,
+            CellState.Found => cell.Color == CellColor.First ? Settings.Brush1 : Settings.Brush2,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        ChangeBrush(cell.Index, brush);
+    }
 
     #endregion
 
@@ -181,7 +172,7 @@ public sealed class ViewModel : INotifyPropertyChanged
 
     private void FillColorCounts()
     {
-        ColorsCounts = _field.ColorsCounts.Select(i => i.ToString()).ToList();
+        ColorsCounts = _field.ColorsCounts.Select(item => item.ToString()).ToList();
         OnPropertyChanged(nameof(ColorsCounts));
     }
 
@@ -191,13 +182,14 @@ public sealed class ViewModel : INotifyPropertyChanged
             throw new IndexOutOfRangeException(nameof(brushIndex));
 
         Brushes[brushIndex] = brush;
+        OnPropertyChanged(nameof(Brushes));
     }
 
     #endregion
 
     #region EventsAndInvocators
 
-    public event ShowMessageEventHandler? ShowMessage;
+    public event Action<string>? ShowMessage;
     public event PropertyChangedEventHandler? PropertyChanged;
 
     [NotifyPropertyChangedInvocator]

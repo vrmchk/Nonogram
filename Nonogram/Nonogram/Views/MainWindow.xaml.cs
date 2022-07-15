@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using Nonogram.Extensions;
 using Nonogram.ViewModels;
 
 
@@ -79,12 +78,14 @@ namespace Nonogram.Views
                 InputBindingCollection inputBindings = _gameGrids[i].InputBindings;
                 inputBindings.Add(new MouseBinding
                 {
-                    MouseAction = MouseAction.LeftClick, Command = _viewModel.FillCellWithFirstColorCommand,
+                    MouseAction = MouseAction.LeftClick,
+                    Command = _viewModel.FillCellWithColor1Command,
                     CommandParameter = i
                 });
                 inputBindings.Add(new MouseBinding
                 {
-                    MouseAction = MouseAction.RightClick, Command = _viewModel.FillCellWithSecondColorCommand,
+                    MouseAction = MouseAction.RightClick,
+                    Command = _viewModel.FillCellWithColor2Command,
                     CommandParameter = i
                 });
             }

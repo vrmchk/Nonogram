@@ -2,7 +2,7 @@
 
 namespace Nonogram.Models;
 
-internal class SerializableField
+internal class SerializableField : IFieldGenerator
 {
     public SerializableField(List<Cell> cells, List<int> colorsCounts, int hintsLeft)
     {
@@ -10,8 +10,8 @@ internal class SerializableField
         ColorsCounts = colorsCounts;
         HintsLeft = hintsLeft;
     }
-    
-    public List<Cell> Cells { get; set; }
-    public List<int> ColorsCounts { get; set; }
-    public int HintsLeft { get; set; }
+
+    public List<Cell> Cells { get; init; }
+    public List<int> ColorsCounts { get; init; }
+    public int HintsLeft { get; init; }
 }

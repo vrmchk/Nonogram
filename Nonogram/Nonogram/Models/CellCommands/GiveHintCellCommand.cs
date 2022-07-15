@@ -1,4 +1,6 @@
-﻿namespace Nonogram.Models.CellCommands;
+﻿using Nonogram.Enums;
+
+namespace Nonogram.Models.CellCommands;
 
 /// <summary>
 /// Command pattern implemented
@@ -6,14 +8,14 @@
 internal class GiveHintCellCommand : ICellCommand
 {
     private readonly Cell _cell;
+    private readonly CellState _previousState;
 
-    public GiveHintCellCommand(Cell cell) => _cell = cell;
-
-    public void Execute() => _cell.IsFound = true;
-
-    public Cell Undo()
+    public GiveHintCellCommand(Cell cell)
     {
-        _cell.IsFound = false;
-        return _cell;
+        _cell = cell;
+        _previousState = _cell.State;
     }
+
+    public void Execute() => _cell.State = CellState.Found;
+    public void Undo() => _cell.State = _previousState;
 }

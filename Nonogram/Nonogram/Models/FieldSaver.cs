@@ -6,48 +6,44 @@ namespace Nonogram.Models;
 
 internal class FieldSaver
 {
-    private readonly string _pathToSavedField;
+    private const string pathToSavedField = @"SavedField.json";
     private readonly Field _field;
 
     public FieldSaver(Field field)
     {
-        _pathToSavedField = @"SavedField";
         _field = field;
     }
 
     public void Save()
     {
-        using (StreamWriter writer = new StreamWriter(_pathToSavedField, append: false))
-        {
-            var (cells, colorsCounts, hintsLeft) = _field;
-            SerializableField serializableField = new SerializableField(cells, colorsCounts, hintsLeft);
-            writer.Write(JsonSerializer.Serialize(serializableField));
-        }
+        using StreamWriter writer = new StreamWriter(pathToSavedField, append: false);
+        writer.Write(JsonSerializer.Serialize(_field.AsSerializable()));
     }
 
-    public void LoadExistingGame()
+    public IFieldGenerator GetExistingFieldGenerator()
     {
+        IFieldGenerator generator;
         try
         {
-            using (StreamReader reader = new StreamReader(_pathToSavedField))
-            {
-                string fileText = reader.ReadToEnd();
-                if (fileText == string.Empty)
-                    throw new InvalidOperationException("Game hasn't been saved");
+            using StreamReader reader = new StreamReader(pathToSavedField);
+            string fileContent = reader.ReadToEnd();
+            if (string.IsNullOrEmpty(fileContent))
+                throw new InvalidOperationException("Game hasn't been saved");
 
-                SerializableField? fromJson = JsonSerializer.Deserialize<SerializableField>(fileText);
-                if (fromJson == null)
-                    throw new NullReferenceException("File data were incorrect");
-
-                _field.LoadExistingGame(fromJson.Cells, fromJson.ColorsCounts, fromJson.HintsLeft);
-            }
+            generator = JsonSerializer.Deserialize<SerializableField>(fileContent) ??
+                        throw new InvalidOperationException("File data were incorrect");
         }
         catch (FileNotFoundException)
         {
             throw new FileNotFoundException("Saving file doesn't exist");
         }
-        RewriteFile();
+        finally
+        {
+            RewriteFile();
+        }
+
+        return generator;
     }
 
-    private void RewriteFile() => File.Create(_pathToSavedField).Close();
+    private void RewriteFile() => File.Create(pathToSavedField).Close();
 }

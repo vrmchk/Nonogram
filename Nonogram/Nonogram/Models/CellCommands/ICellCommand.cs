@@ -6,5 +6,5 @@
 internal interface ICellCommand
 {
     public void Execute();
-    public Cell Undo();
+    public void Undo();
 }

@@ -6,4 +6,5 @@ internal interface IFieldGenerator
 {
     public List<Cell> Cells { get; }
     public List<int> ColorsCounts { get; }
+    public int HintsLeft { get; }
 }

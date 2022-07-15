@@ -9,31 +9,20 @@ internal class FillCellCommand : ICellCommand
 {
     private readonly Cell _cell;
     private readonly CellColor _color;
-
+    private readonly CellState _previousState;
 
     public FillCellCommand(Cell cell, CellColor color)
     {
         _cell = cell;
         _color = color;
+        _previousState = _cell.State;
     }
-
-    public bool WasExecuted { get; private set; }
 
     public void Execute()
     {
-        if (_cell.IsFound || _cell.Color != _color)
-        {
-            WasExecuted = false;
-            return;
-        }
+        if (_cell.State == CellState.Found) return;
+        _cell.State = _cell.Color == _color ? CellState.Found : CellState.FoundIncorrect;
+    }
 
-        _cell.IsFound = true;
-        WasExecuted = true;
-    }
-    
-    public Cell Undo()
-    {
-        _cell.IsFound = false;
-        return _cell;
-    }
+    public void Undo() => _cell.State = _previousState;
 }
